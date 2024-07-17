@@ -9,7 +9,12 @@ module.exports = (app) => {
             scope: ["profile", "email"]
         }));
 
-    app.get("/auth/current_user", (req, res) => {
+    app.get("/api/logout", (req, res) => {
+        req.logout();
         res.send(req.user);
+    })
+
+    app.get("/auth/current_user", (req, res) => {
+        res.send(req.session);
     });
 }
